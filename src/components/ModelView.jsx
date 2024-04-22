@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import IPhone from './IPhone';
 import * as THREE from 'three';
 import Loader from './Loader';
+import { isMobile } from 'react-device-detect';
 
 const ModelView = ({
   index,
@@ -16,22 +17,28 @@ const ModelView = ({
   item,
 }) => {
   return (
-    <View index={index} id={gsapType}  className={`w-full h-full absolute ${index === 2 ? 'right-[-100%]' : ''}`}>
+    <View
+      index={index}
+      id={gsapType}
+      className={`w-full h-full absolute ${index === 2 ? 'right-[-100%]' : ''}`}
+    >
       <ambientLight intensity={0.2} />
 
       <PerspectiveCamera makeDefault position={[0, 0, 4]} />
 
       <Lights />
 
-      <OrbitControls
-        makeDefault
-        ref={controlRef}
-        enableZoom={false}
-        enablePan={false}
-        rotateSpeed={0.4}
-        target={new THREE.Vector3(0, 0, 0)}
-        onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}
-      />
+      {!isMobile && (
+        <OrbitControls
+          makeDefault
+          ref={controlRef}
+          enableZoom={false}
+          enablePan={false}
+          rotateSpeed={0.4}
+          target={new THREE.Vector3(0, 0, 0)}
+          onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}
+        />
+      )}
 
       <group
         ref={groupRef}
