@@ -26,7 +26,7 @@ const Features = () => {
     gsap.to('#exploreVideo', {
       scrollTrigger: {
         trigger: '#exploreVideo',
-        toggleActions: 'play pause resume reset',
+        toggleActions: 'play pause restart reset',
         start: '-10% bottom',
       },
       onComplete: () => {
