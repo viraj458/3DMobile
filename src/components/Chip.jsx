@@ -28,7 +28,7 @@ const Chip = () => {
   }, []);
 
   return (
-    <section className="common-padding overflow-hidden">
+    <section className="py-8 lg:py-16 pt-20 sm:px-10 px-5 overflow-hidden">
       <div className="screen-max-width">
         <div id="chip" className="flex-center w-full my-20">
           <img src={chipImg} alt="chip" width={180} height={180} />
